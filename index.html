@@ -1,0 +1,269 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script type="text/javascript" async=""
+    src="https://www.googletagmanager.com/gtag/js?id=G-C23GBZJC8P&amp;l=dataLayer&amp;cx=c" nonce="FshrAf6B"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <title>CỦ CHI-THU TIÊM PHÒNG</title>
+  <link rel="stylesheet" href="style.css">
+
+  <script defer="" src="/__/firebase/8.2.3/firebase-app.js"></script>
+  <script defer="" src="/__/firebase/8.2.3/firebase-auth.js"></script>
+  <script defer="" src="/__/firebase/8.2.3/firebase-database.js"></script>
+  <script defer="" src="/__/firebase/8.2.3/firebase-firestore.js"></script>
+  <script defer="" src="/__/firebase/8.2.3/firebase-functions.js"></script>
+  <script defer="" src="/__/firebase/8.2.3/firebase-messaging.js"></script>
+  <script defer="" src="/__/firebase/8.2.3/firebase-storage.js"></script>
+  <script defer="" src="/__/firebase/8.2.3/firebase-analytics.js"></script>
+  <script defer="" src="/__/firebase/8.2.3/firebase-remote-config.js"></script>
+  <script defer="" src="/__/firebase/8.2.3/firebase-performance.js"></script>
+  <script defer="" src="/__/firebase/init.js?useEmulator=true"></script>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <meta property="og:description" content="sadsd">
+  <script src="https://www.googletagmanager.com/gtag/js?l=dataLayer" async=""></script>
+</head>
+<script>
+
+  function printResults(result) {
+    Object.keys(result).forEach(key => {
+      document.getElementById(key).value = result[key];
+    })
+  }
+
+  function sumOfNbr() {
+    var heo1, heo2, heo3, heo4, bo1, bo2, bo3, trau1, trau2, de, cuu, sum, sum2;
+    heo1 = Number(document.getElementById("heo1").value) * 0.016;
+    heo2 = Number(document.getElementById("heo2").value) * 0.2;
+    heo3 = Number(document.getElementById("heo3").value) * 0.5;
+    heo4 = Number(document.getElementById("heo4").value) * 0.6;
+    heo5 = Number(document.getElementById("heo5").value) * 0.2;
+    heo6 = Number(document.getElementById("heo6").value) * 0.2;
+    bo1 = Number(document.getElementById("bo1").value) * 0.2;
+    bo2 = Number(document.getElementById("bo2").value) * 1;
+    bo3 = Number(document.getElementById("bo3").value) * 0.7;
+    bo4 = Number(document.getElementById("bo4").value) * 0.34;
+    trau1 = Number(document.getElementById("trau1").value) * 0.24;
+    trau2 = Number(document.getElementById("trau2").value) * 0.7;
+    de = Number(document.getElementById("de").value) * 0.05;
+    cuu = Number(document.getElementById("cuu").value) * 0.06;
+    sum = heo1 + heo2 + heo3 + heo4 + heo5 + heo6 + bo1 + bo2 + bo3 + bo4 + trau1 + trau2 + de + cuu;
+    document.getElementById("sum").value = Math.round(sum * 100) / 100;
+
+sum2 = heo1/0.016 + heo2/0.2 + heo3/0.5 + heo4/0.6 + heo5/0.2 + heo6/0.2 + bo1/0.2 + bo2 + bo3/0.7 + bo4/0.34 + trau1/0.24 + trau2/0.7 + de/0.05 + cuu/0.06;
+document.getElementById("sum2").value = Math.round(sum2 * 100) / 100;
+
+    if (sum == 0) {
+      printResults({
+        gsthucnuoi1: '',
+        thutientp: '',
+        fmd1: '',
+        fmd2: '',
+        fmd4: '',
+        tht2: '',
+        vdnc2: ''
+      });
+    } else if (sum < 10) {
+      printResults({
+        gsthucnuoi1: 'Nông Hộ',
+        thutientp: 'Miễn Phí 100%',
+        fmd1: 'Miễn Phí',
+        fmd2: 'Miễn Phí',
+        fmd4: 'Miễn Phí',
+        tht2: 'Miễn Phí',
+        vdnc2: 'Miễn Phí'
+      });
+    } else if (10 <= sum & sum < 30) {
+      printResults({
+        gsthucnuoi1: 'QM Nhỏ',
+        thutientp: 'Thu 50%',
+        fmd1: 'Thu 9.800đ',
+        fmd2: 'Thu 16.300đ',
+        fmd4: '5.700đ',
+        tht2: 'Thu 4.700đ',
+        vdnc2: 'Thu 18.300đ'
+      });
+    } else if (30 <= sum & sum < 300) {
+      printResults({
+        gsthucnuoi1: 'QM Vừa',
+        thutientp: 'Thu 100%',
+        fmd1: 'Thu 22.000đ',
+        fmd2: 'Thu 34.000đ',
+        fmd4: 'Thu 13.000đ',
+        tht2: 'Thu 11.000đ',
+        vdnc2: 'Thu 40.000đ'
+      });
+    } else if (sum => 300) {
+      printResults({
+        gsthucnuoi1: 'QM Lớn',
+        thutientp: 'Thu 100%',
+        fmd1: 'Thu 22.000đ',
+        fmd2: 'Thu 34.000đ',
+        fmd4: 'Thu 13.000đ',
+        tht2: 'Thu 11.000đ',
+        vdnc2: 'Thu 40.000đ'
+      });
+    }
+
+  }    
+</script>
+
+<style>
+  label {
+    width: 160px;
+  }
+
+  button[type="submit"] {
+    padding: 5px 40px;
+  }
+  input {
+    width: 150px;
+  }
+</style>
+
+<body>
+  <div class="container-sm">
+    <h3 class="mb-3" style="color:green">Tính Đơn Vị Vật Nuôi</h3>
+    <div class="row heo">
+      <div class="col-6">
+        <label for="heo1">Heo < 28 ngày</label>
+            <input id="heo1" type="number">
+      </div>
+      <div class="col-6">
+        <label for="heo5">Heo cai sữa</label>
+        <input id="heo5" type="number">
+      </div>
+      <div class="col-6">
+        <label for="heo6">Heo hậu bị Đực+Cái</label>
+        <input id="heo6" type="number">
+      </div>
+      <div class="col-6">
+        <label for="heo2">Heo Thịt</label>
+        <input id="heo2" type="number">
+      </div>
+      <div class="col-6">
+        <label for="heo3">Heo Nái</label>
+        <input id="heo3" type="number">
+      </div>
+      <div class="col-6">
+        <label for="heo4">Heo Nọc</label>
+        <input id="heo4" type="number">
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="row bo">
+      <div class="col-6">
+        <label for="bo1">Bê (dưới 6tháng)</label>
+        <input id="bo1" type="number">
+      </div>
+      <div class="col-6">
+        <label for="bo2">Bò Sữa</label>
+        <input id="bo2" type="number">
+      </div>
+      <div class="col-6">
+        <label for="bo3">Bò lai hướng Thịt</label>
+        <input id="bo3" type="number">
+      </div>
+      <div class="col-6">
+        <label for="bo4">Bò lai SinD, bò nội</label>
+        <input id="bo4" type="number">
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="row trau">
+      <div class="col-6">
+        <label for="trau1">Nghé</label>
+        <input id="trau1" type="number">
+      </div>
+      <div class="col-6">
+        <label for="trau2">Trâu</label>
+        <input id="trau2" type="number">
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="row de cuu">
+      <div class="col-6">
+        <label for="de">Dê</label>
+        <input id="de" type="number">
+      </div>
+      <div class="col-6">
+        <label for="cuu">Cừu</label>
+        <input id="cuu" type="number">
+      </div>
+    </div>
+
+    <div class="row my-5 calculate">
+      <div class="col text-center">
+        <button class="btn btn-primary" type="submit" onclick="sumOfNbr()">Tính</button>
+      </div>
+    </div>
+
+    <div class="row results">
+      <div class="col-md-3 col-sm-6">
+   <label for="gsthucnuoi1">QUY MÔ CHĂN NUÔI:</label>
+        <input id="gsthucnuoi1" type="text" disabled>
+      </div>
+    <div class="row results">
+      <div class="col-md-3 col-sm-6">
+        <label for="sum2">TỔNG ĐÀN GIA SÚC:</label>
+        <input id="sum2" type="text" disabled>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <label for="sum">Đơn Vị Vật Nuôi:</label>
+        <input id="sum" type="text" disabled>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <label for="thutientp">Thu Tiền TP:</label>
+        <input id="thutientp" type="text" disabled>
+      </div>
+    </div>
+    <hr>
+
+    <div class="row mt-2">
+      <div class="col-6">
+        <h5>Heo</h5>
+        <label for="fmd1">FMD:</label>
+        <input id="fmd1" type="text" disabled>
+      </div>
+      <div class="col-6">
+        <h5>Dê Cừu</h5>
+        <label for="fmd4">FMD:</label>
+        <input id="fmd4" type="text" disabled>
+      </div>
+    </div>
+    <hr>
+
+    <div class="row mt-2">
+      <div class="col-12">
+        <h5>Trâu Bò</h5>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <label for="fmd2">FMD:</label>
+        <input id="fmd2" type="text" disabled>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <label for="tht2">THT:</label>
+        <input id="tht2" type="text" disabled>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <label for="vdnc2">VDNC:</label>
+        <input id="vdnc2" type="text" disabled>
+      </div>
+    </div>
+    <hr>
+  </div>
+</body>
+
+</html>
